@@ -36,6 +36,15 @@ body{
   grid-template-columns:1fr 1fr;
   overflow:hidden;
   transform:scale(.995);
+  filter:brightness(.92);
+}
+
+.block::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at center,transparent 35%,rgba(0,0,0,.25));
+  pointer-events:none;
 }
 
 .orange{ background:#ff4d1a; }
@@ -49,67 +58,44 @@ body{
 }
 
 /* SYMBOL */
-
 .symbol{
   align-items:center;
   justify-content:center;
 }
 
 .symbol img{
-
   width:min(72vh,680px);
   height:min(72vh,680px);
-
   object-fit:contain;
 }
 
 /* TEXT */
-
 .text{
-    background:#1a1a1a;
-    color:#fff;
+  background:#1a1a1a;
+  color:#fff;
 
-    display:flex;
-    flex-direction:column;
+  display:flex;
+  flex-direction:column;
 
-    justify-content:flex-start;
-    align-items:flex-start;
+  justify-content:flex-start;
+  align-items:flex-start;
 
-    padding:70px 80px;
+  padding:70px 80px;
 }
+
 h2{
-
-    font-size:clamp(52px,4vw,72px);
-
-    font-weight:500;
-
-    line-height:.95;
-
-    letter-spacing:-0.03em;
-
-    margin-bottom:24px;
+  font-size:clamp(52px,4vw,72px);
+  font-weight:500;
+  line-height:.95;
+  letter-spacing:-0.03em;
+  margin-bottom:24px;
 }
 
 p{
-
-    font-size:clamp(22px,1.6vw,30px);
-
-    line-height:1.5;
-
-    max-width:760px;
-
-    opacity:.92;
-}
-.block{
-  filter:brightness(.92);
-}
-
-.block::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:radial-gradient(circle at center,transparent 35%,rgba(0,0,0,.25));
-  pointer-events:none;
+  font-size:clamp(22px,1.6vw,30px);
+  line-height:1.5;
+  max-width:760px;
+  opacity:.92;
 }
 
 /* ===========================
@@ -119,34 +105,24 @@ TABLET
 @media (max-width:1200px){
 
 .block{
-
-    grid-template-columns:40% 60%;
-
+  grid-template-columns:40% 60%;
 }
 
 .symbol img{
-
-    width:min(55vw,420px);
-    height:min(55vw,420px);
-
+  width:min(55vw,420px);
+  height:min(55vw,420px);
 }
 
 .text{
-
-    padding:60px;
-
+  padding:60px;
 }
 
 h2{
-
-    font-size:clamp(42px,5vw,60px);
-
+  font-size:clamp(42px,5vw,60px);
 }
 
 p{
-
-    font-size:22px;
-
+  font-size:22px;
 }
 
 }
@@ -158,64 +134,53 @@ MOBILE
 @media (max-width:768px){
 
 .wrap{
-
-    height:auto;
-
+  height:auto;
 }
 
 .block{
-
-    position:relative;
-
-    height:auto;
-
-    display:flex;
-
-    flex-direction:column;
-
+  position:relative;
+  height:auto;
+  display:flex;
+  flex-direction:column;
 }
 
+/* базово */
+.half{
+  width:100%;
+}
+
+/* дефолтный порядок */
+.symbol{ order:1; }
+.text{ order:2; }
+
+/* если блок инвертирован */
+.block[data-reverse="true"] .symbol{ order:2; }
+.block[data-reverse="true"] .text{ order:1; }
+
 .symbol{
-
-    width:100%;
-    height:42vh;
-
+  height:42vh;
 }
 
 .text{
-
-    width:100%;
-
-    min-height:58vh;
-
-    padding:40px 28px;
-
+  min-height:58vh;
+  padding:40px 28px;
 }
 
 .symbol img{
-
-    width:70vw;
-    height:70vw;
-
-    max-width:340px;
-    max-height:340px;
-
+  width:70vw;
+  height:70vw;
+  max-width:340px;
+  max-height:340px;
 }
 
 h2{
-
-    font-size:42px;
-
-    margin-bottom:18px;
-
+  font-size:42px;
+  margin-bottom:18px;
 }
 
 p{
-
-    font-size:20px;
-
-    line-height:1.55;
-
+  font-size:20px;
+  line-height:1.55;
 }
 
 }
@@ -228,125 +193,84 @@ p{
 <div class="wrap">
 
 <!-- 1 -->
-
 <section class="block">
+  <div class="half symbol orange">
+    <img src="images/tea.svg">
+  </div>
 
-<div class="half symbol orange">
-
-<img src="images/tea.svg">
-
-</div>
-
-<div class="half text">
-
-<div>
-
-<h2>Пьем чай</h2>
-
-<p>
-Пауза — настройка слуха. Завариваем, разливаем, молчим.
-Слушаем воду,
-стук пиал, дыхание залива.
-Чаем занимается Хранитель пауз.
-Посуда — ручная работа, можно заполучить.
-</p>
-
-</div>
-
-</div>
-
+  <div class="half text">
+    <div>
+      <h2>Пьем чай</h2>
+      <p>
+        Пауза — настройка слуха. Завариваем, разливаем, молчим.
+        Слушаем воду, стук пиал, дыхание залива.
+        Чаем занимается Хранитель пауз.
+        Посуда — ручная работа, можно заполучить.
+      </p>
+    </div>
+  </div>
 </section>
 
-<!-- 2 -->
+<!-- 2 (ИНВЕРСИЯ) -->
+<section class="block" data-reverse="true">
+  <div class="half text">
+    <div>
+      <h2>Делаем классные деревяшки</h2>
+      <p>
+        Чайные принадлежности и другая красота из дерева разных пород.
+        Масло вместо лака.
+        Слышишь? — это дерево дышит.
+        Каждая поверхность хранит след инструмента и времени.
+      </p>
+    </div>
+  </div>
 
-<section class="block">
-
-<div class="half text">
-
-<div>
-
-<h2>Делаем классные деревяшки</h2>
-
-<p>
-Чайные принадлежности и другая красота из дерева разных пород.
-Масло вместо лака.
-Слышишь? — это дерево дышит.
-Каждая поверхность хранит след инструмента и времени.
-</p>
-
-</div>
-
-</div>
-
-<div class="half symbol green">
-
-<img src="images/wood.svg">
-
-</div>
-
+  <div class="half symbol green">
+    <img src="images/wood.svg">
+  </div>
 </section>
+
 <!-- 3 -->
-
 <section class="block">
+  <div class="half symbol purple">
+    <img src="images/instruments.svg">
+  </div>
 
-    <div class="half symbol purple">
-
-        <img src="images/instruments.svg">
-
+  <div class="half text">
+    <div>
+      <h2>Строим музыкальные инструменты</h2>
+      <p>
+        Гравитон — гравитационный аккорд.
+        Гул планетарного масштаба.
+        Кахон Фибоначчи — перкуссионный ящик в золотой пропорции.
+        Сухой глубокий бас.
+        Монохорд — одна струна, сто смыслов.
+        Медитация в дереве и звуке.
+      </p>
     </div>
-
-    <div class="half text">
-
-        <div>
-
-            <h2>Строим музыкальные инструменты</h2>
-
-            <p>
-                Гравитон — гравитационный аккорд.
-                Гул планетарного масштаба.
-                Кахон Фибоначчи — перкуссионный ящик в золотой пропорции.
-                Сухой глубокий бас.
-                Монохорд — одна струна, сто смыслов.
-                Медитация в дереве и звуке.
-            </p>
-
-        </div>
-
-    </div>
-
+  </div>
 </section>
 
-<!-- 4 -->
-
-<section class="block">
-
-    <div class="half text">
-
-        <div>
-
-            <h2>Играем музыку</h2>
-
-            <p>
-                Каждая встреча заканчивается общей игрой.
-                Без нот, без правил.
-                Кто-то задаёт ритм на кахоне,
-                кто-то ласкает монохорд,
-                кто-то просто сидит.
-                Записываем фрагмент —
-                он уходит в закрытый чат
-                «заварили-запилили».
-            </p>
-
-        </div>
-
+<!-- 4 (ИНВЕРСИЯ) -->
+<section class="block" data-reverse="true">
+  <div class="half text">
+    <div>
+      <h2>Играем музыку</h2>
+      <p>
+        Каждая встреча заканчивается общей игрой.
+        Без нот, без правил.
+        Кто-то задаёт ритм на кахоне,
+        кто-то ласкает монохорд,
+        кто-то просто сидит.
+        Записываем фрагмент —
+        он уходит в закрытый чат «заварили-запилили».
+      </p>
     </div>
+  </div>
 
-    <div class="half symbol orange">
-
-        <img src="images/music.svg">
-
-    </div>
-
+  <div class="half symbol orange">
+    <img src="images/music.svg">
+  </div>
 </section>
 
 </div>
