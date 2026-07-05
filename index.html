@@ -29,7 +29,7 @@ body{
 }
 
 /* =========================
-DESKTOP (как у тебя)
+DESKTOP (ВОЗВРАТ ОРИГИНАЛА)
 ========================= */
 
 .block{
@@ -39,62 +39,60 @@ DESKTOP (как у тебя)
   display:grid;
   grid-template-columns:1fr 1fr;
   overflow:hidden;
-
-  opacity:0.4;
-  transform:scale(1.02);
-  transition:all 0.7s ease;
-}
-
-.block.active{
-  opacity:1;
-  transform:scale(1);
+  transform:scale(.995);
 }
 
 .orange{ background:#ff4d1a; }
 .green{ background:#7CFF2E; }
 .purple{ background:#6A4CFF; }
 
-.card{
-  width:100%;
-  height:100%;
-  display:grid;
-  grid-template-columns:1fr 1fr;
+.half{
+  position:relative;
+  display:flex;
+  overflow:hidden;
 }
 
+/* SYMBOL */
 .symbol{
-  display:flex;
   align-items:center;
   justify-content:center;
 }
 
 .symbol img{
-  width:min(70vh,680px);
-  height:min(70vh,680px);
+  width:min(72vh,680px);
+  height:min(72vh,680px);
   object-fit:contain;
 }
 
+/* TEXT */
 .text{
   background:#1a1a1a;
   color:#fff;
+
   display:flex;
   flex-direction:column;
+
   justify-content:flex-start;
+  align-items:flex-start;
+
   padding:70px 80px;
 }
 
 h2{
   font-size:clamp(52px,4vw,72px);
+  font-weight:500;
+  line-height:.95;
   margin-bottom:24px;
 }
 
 p{
   font-size:clamp(22px,1.6vw,30px);
   line-height:1.5;
-  opacity:0.92;
+  opacity:.92;
 }
 
 /* =========================
-MOBILE (RESIDENCE STYLE FIX)
+MOBILE (ТОЛЬКО ВЕРТИКАЛЬНО)
 ========================= */
 
 @media (max-width:768px){
@@ -107,63 +105,54 @@ MOBILE (RESIDENCE STYLE FIX)
   position:sticky;
   top:0;
   height:100vh;
+
   display:flex;
-  align-items:center;
-  justify-content:center;
+  flex-direction:column;
 
-  opacity:0.4;
-  transform:scale(1.03);
-  transition:all 0.7s ease;
-}
-
-.block.active{
-  opacity:1;
   transform:scale(1);
 }
 
-.card{
-  width:90vw;
-  aspect-ratio:1 / 1;
-  display:flex;
-  flex-direction:column;
-  overflow:hidden;
+.half{
+  width:100%;
 }
 
-.orange{ background:#ff4d1a; }
-.green{ background:#7CFF2E; }
-.purple{ background:#6A4CFF; }
-
+/* символ сверху */
 .symbol{
-  flex:0 0 55%;
+  height:auto;
   display:flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
+  padding:20px 0;
 }
 
 .symbol img{
-  width:60%;
+  width:min(70%,320px);
   height:auto;
 }
 
+/* текст снизу */
 .text{
-  flex:1;
+  background:#1a1a1a;
+  color:#fff;
+
   display:flex;
   flex-direction:column;
   justify-content:flex-start;
-  padding:16px;
+
+  padding:20px;
 }
 
 h2{
-  font-size:18px;
-  margin-bottom:8px;
+  font-size:20px;
+  margin-bottom:10px;
 }
 
 p{
-  font-size:13px;
+  font-size:14px;
   line-height:1.4;
 }
 
-/* ======= ТВОЙ ТЕКСТ ======= */
+}
 
 </style>
 </head>
@@ -174,92 +163,72 @@ p{
 
 <!-- 1 -->
 <section class="block">
-  <div class="card orange">
-
-    <div class="symbol">
-      <img src="images/tea.svg">
-    </div>
-
-    <div class="text">
-      <h2>Пьем чай</h2>
-      <p>
-        Пауза — настройка слуха. Завариваем, разливаем, молчим.
-        Слушаем воду,
-        стук пиал, дыхание залива.
-        Чаем занимается Хранитель пауз.
-        Посуда — ручная работа, можно заполучить.
-      </p>
-    </div>
-
+  <div class="half symbol orange">
+    <img src="images/tea.svg">
+  </div>
+  <div class="half text">
+    <h2>Пьем чай</h2>
+    <p>
+      Пауза — настройка слуха. Завариваем, разливаем, молчим.
+      Слушаем воду,
+      стук пиал, дыхание залива.
+      Чаем занимается Хранитель пауз.
+      Посуда — ручная работа, можно заполучить.
+    </p>
   </div>
 </section>
 
 <!-- 2 -->
 <section class="block">
-  <div class="card green">
-
-    <div class="symbol">
-      <img src="images/wood.svg">
-    </div>
-
-    <div class="text">
-      <h2>Делаем классные деревяшки</h2>
-      <p>
-        Чайные принадлежности и другая красота из дерева разных пород.
-        Масло вместо лака.
-        Слышишь? — это дерево дышит.
-        Каждая поверхность хранит след инструмента и времени.
-      </p>
-    </div>
-
+  <div class="half text">
+    <h2>Делаем классные деревяшки</h2>
+    <p>
+      Чайные принадлежности и другая красота из дерева разных пород.
+      Масло вместо лака.
+      Слышишь? — это дерево дышит.
+      Каждая поверхность хранит след инструмента и времени.
+    </p>
+  </div>
+  <div class="half symbol green">
+    <img src="images/wood.svg">
   </div>
 </section>
 
 <!-- 3 -->
 <section class="block">
-  <div class="card purple">
-
-    <div class="symbol">
-      <img src="images/instruments.svg">
-    </div>
-
-    <div class="text">
-      <h2>Строим музыкальные инструменты</h2>
-      <p>
-        Гравитон — гравитационный аккорд.
-        Гул планетарного масштаба.
-        Кахон Фибоначчи — перкуссионный ящик в золотой пропорции.
-        Сухой глубокий бас.
-        Монохорд — одна струна, сто смыслов.
-        Медитация в дереве и звуке.
-      </p>
-    </div>
-
+  <div class="half symbol purple">
+    <img src="images/instruments.svg">
+  </div>
+  <div class="half text">
+    <h2>Строим музыкальные инструменты</h2>
+    <p>
+      Гравитон — гравитационный аккорд.
+      Гул планетарного масштаба.
+      Кахон Фибоначчи — перкуссионный ящик в золотой пропорции.
+      Сухой глубокий бас.
+      Монохорд — одна струна, сто смыслов.
+      Медитация в дереве и звуке.
+    </p>
   </div>
 </section>
 
 <!-- 4 -->
 <section class="block">
-  <div class="card orange">
-
-    <div class="symbol">
-      <img src="images/music.svg">
-    </div>
-
-    <div class="text">
-      <h2>Играем музыку</h2>
-      <p>
-        Каждая встреча заканчивается общей игрой.
-        Без нот, без правил.
-        Кто-то задаёт ритм на кахоне,
-        кто-то ласкает монохорд,
-        кто-то просто сидит.
-        Записываем фрагмент —
-        он уходит в закрытый чат
-        «заварили-запилили».
-      </p>
-    </div>
-
+  <div class="half text">
+    <h2>Играем музыку</h2>
+    <p>
+      Каждая встреча заканчивается общей игрой.
+      Без нот, без правил.
+      Кто-то задаёт ритм на кахоне,
+      кто-то ласкает монохорд,
+      кто-то просто сидит.
+      Записываем фрагмент —
+      он уходит в закрытый чат
+      «заварили-запилили».
+    </p>
+  </div>
+  <div class="half symbol orange">
+    <img src="images/music.svg">
   </div>
 </section>
 
