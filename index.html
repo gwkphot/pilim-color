@@ -29,7 +29,7 @@ body{
 }
 
 /* =========================
-DESKTOP
+DESKTOP (оставляем как есть)
 ========================= */
 
 .block{
@@ -48,14 +48,6 @@ DESKTOP
 .block.active{
   opacity:1;
   transform:scale(1);
-}
-
-.block::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:radial-gradient(circle at center,transparent 35%,rgba(0,0,0,.25));
-  pointer-events:none;
 }
 
 .orange{ background:#ff4d1a; }
@@ -84,62 +76,14 @@ DESKTOP
 .text{
   background:#1a1a1a;
   color:#fff;
-
   display:flex;
   flex-direction:column;
-
   justify-content:flex-start;
-  align-items:flex-start;
-
   padding:70px 80px;
 }
 
-h2{
-  font-size:clamp(52px,4vw,72px);
-  font-weight:500;
-  line-height:.95;
-  letter-spacing:-0.03em;
-  margin-bottom:24px;
-}
-
-p{
-  font-size:clamp(22px,1.6vw,30px);
-  line-height:1.5;
-  max-width:760px;
-  opacity:.92;
-}
-
 /* =========================
-TABLET
-========================= */
-
-@media (max-width:1200px){
-
-.block{
-  grid-template-columns:40% 60%;
-}
-
-.symbol img{
-  width:min(55vw,420px);
-  height:min(55vw,420px);
-}
-
-.text{
-  padding:60px;
-}
-
-h2{
-  font-size:clamp(42px,5vw,60px);
-}
-
-p{
-  font-size:22px;
-}
-
-}
-
-/* =========================
-MOBILE (STRICT ORDER FIX)
+MOBILE — RESIDENCE STYLE
 ========================= */
 
 @media (max-width:768px){
@@ -148,16 +92,16 @@ MOBILE (STRICT ORDER FIX)
   height:auto;
 }
 
-/* сцена остаётся сценой */
+/* сцена */
 .block{
   position:sticky;
   top:0;
   height:100vh;
   display:flex;
-  flex-direction:column;
-
+  align-items:center;
+  justify-content:center;
   opacity:0.6;
-  transform:scale(1.02);
+  transform:scale(1.03);
   transition:all 0.6s ease;
 }
 
@@ -166,47 +110,55 @@ MOBILE (STRICT ORDER FIX)
   transform:scale(1);
 }
 
-/* ВАЖНО: порядок сохраняем логически */
+/* 🔥 КВАДРАТНАЯ КАРТОЧКА */
 .half{
-  width:100%;
+  width:90vw;
+  aspect-ratio:1 / 1;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  border-radius:18px;
 }
 
-/* 🔥 КАРТИНКА СВЕРХУ */
+/* цвета остаются */
+.symbol.orange, .text.orange { background:#ff4d1a; }
+.symbol.green, .text.green { background:#7CFF2E; }
+.symbol.purple, .text.purple { background:#6A4CFF; }
+
+/* символ ВСЕГДА сверху */
 .symbol{
-  order:0;
-  flex:0 0 42vh;
+  flex:0 0 55%;
   display:flex;
   align-items:center;
   justify-content:center;
 }
 
-/* 🔥 ТЕКСТ СНИЗУ */
+/* текст ВСЕГДА снизу */
 .text{
-  order:1;
   flex:1;
-  padding:28px 24px;
+  padding:18px;
   display:flex;
   flex-direction:column;
   justify-content:flex-start;
 }
 
-/* image */
+/* картинка */
 .symbol img{
-  width:70vw;
-  height:70vw;
-  max-width:320px;
-  max-height:320px;
+  width:60%;
+  height:60%;
+  object-fit:contain;
 }
 
-/* typography */
+/* типографика */
 h2{
-  font-size:40px;
-  margin-bottom:16px;
+  font-size:22px;
+  margin-bottom:10px;
+  line-height:1.1;
 }
 
 p{
-  font-size:18px;
-  line-height:1.5;
+  font-size:14px;
+  line-height:1.4;
 }
 
 }
@@ -219,11 +171,13 @@ p{
 <div class="wrap">
 
 <!-- 1 -->
-<section class="block">
+<section class="block active">
+
   <div class="half symbol orange">
     <img src="images/tea.svg">
   </div>
-  <div class="half text">
+
+  <div class="half text orange">
     <h2>Пьем чай</h2>
     <p>
       Пауза — настройка слуха. Завариваем, разливаем, молчим.
@@ -233,11 +187,13 @@ p{
       Посуда — ручная работа, можно заполучить.
     </p>
   </div>
+
 </section>
 
 <!-- 2 -->
 <section class="block">
-  <div class="half text">
+
+  <div class="half text green">
     <h2>Делаем классные деревяшки</h2>
     <p>
       Чайные принадлежности и другая красота из дерева разных пород.
@@ -246,17 +202,21 @@ p{
       Каждая поверхность хранит след инструмента и времени.
     </p>
   </div>
+
   <div class="half symbol green">
     <img src="images/wood.svg">
   </div>
+
 </section>
 
 <!-- 3 -->
 <section class="block">
+
   <div class="half symbol purple">
     <img src="images/instruments.svg">
   </div>
-  <div class="half text">
+
+  <div class="half text purple">
     <h2>Строим музыкальные инструменты</h2>
     <p>
       Гравитон — гравитационный аккорд.
@@ -267,11 +227,13 @@ p{
       Медитация в дереве и звуке.
     </p>
   </div>
+
 </section>
 
 <!-- 4 -->
 <section class="block">
-  <div class="half text">
+
+  <div class="half text orange">
     <h2>Играем музыку</h2>
     <p>
       Каждая встреча заканчивается общей игрой.
@@ -284,30 +246,29 @@ p{
       «заварили-запилили».
     </p>
   </div>
+
   <div class="half symbol orange">
     <img src="images/music.svg">
   </div>
+
 </section>
 
 </div>
 
-<!-- JS АНИМАЦИЯ СЦЕН -->
 <script>
 const blocks = document.querySelectorAll('.block');
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
       entry.target.classList.add('active');
     } else {
       entry.target.classList.remove('active');
     }
   });
-}, {
-  threshold: 0.6
-});
+},{ threshold:0.6 });
 
-blocks.forEach(b => observer.observe(b));
+blocks.forEach(b=>observer.observe(b));
 </script>
 
 </body>
