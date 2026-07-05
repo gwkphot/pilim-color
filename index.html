@@ -28,10 +28,6 @@ body{
   height:400vh;
 }
 
-/* =========================
-DESKTOP
-========================= */
-
 .block{
   position:sticky;
   top:0;
@@ -132,7 +128,7 @@ p{
 }
 
 /* =========================
-MOBILE — FIXED SEQUENCE
+MOBILE — FIXED ORDER
 ========================= */
 
 @media (max-width:768px){
@@ -143,7 +139,6 @@ MOBILE — FIXED SEQUENCE
   flex-direction:column;
 }
 
-/* превращаем блоки в поток */
 .block{
   position:relative;
   display:flex;
@@ -151,12 +146,11 @@ MOBILE — FIXED SEQUENCE
   height:auto;
 }
 
-/* ВАЖНО: общий порядок в одном потоке */
 .half{
   width:100%;
 }
 
-/* символ и текст становятся глобальной лентой */
+/* базовый порядок */
 .symbol{
   order:1;
   height:42vh;
@@ -171,7 +165,7 @@ MOBILE — FIXED SEQUENCE
   padding:40px 28px;
 }
 
-/* 🔥 КЛЮЧЕВОЕ ЧЕРЕДОВАНИЕ */
+/* чередование блоков */
 .block:nth-child(even) .symbol{
   order:2;
 }
@@ -180,7 +174,6 @@ MOBILE — FIXED SEQUENCE
   order:1;
 }
 
-/* IMAGE SIZE MOBILE */
 .symbol img{
   width:70vw;
   height:70vw;
@@ -209,67 +202,99 @@ p{
 
 <!-- 1 -->
 <section class="block">
-  <div class="half symbol orange">
-    <img src="images/tea.svg">
-  </div>
-  <div class="half text">
-    <div>
-      <h2>Пьем чай</h2>
-      <p>
-        Пауза — настройка слуха. Завариваем, разливаем, молчим.
-        Слушаем воду, стук пиал, дыхание залива.
-      </p>
-    </div>
-  </div>
+
+<div class="half symbol orange">
+<img src="images/tea.svg">
+</div>
+
+<div class="half text">
+<div>
+<h2>Пьем чай</h2>
+<p>
+Пауза — настройка слуха. Завариваем, разливаем, молчим.
+Слушаем воду,
+стук пиал, дыхание залива.
+Чаем занимается Хранитель пауз.
+Посуда — ручная работа, можно заполучить.
+</p>
+</div>
+</div>
+
 </section>
 
 <!-- 2 -->
 <section class="block">
-  <div class="half text">
-    <div>
-      <h2>Делаем деревяшки</h2>
-      <p>
-        Чайные принадлежности и красота из дерева разных пород.
-        Масло вместо лака.
-      </p>
-    </div>
-  </div>
 
-  <div class="half symbol green">
-    <img src="images/wood.svg">
-  </div>
+<div class="half text">
+
+<div>
+<h2>Делаем классные деревяшки</h2>
+<p>
+Чайные принадлежности и другая красота из дерева разных пород.
+Масло вместо лака.
+Слышишь? — это дерево дышит.
+Каждая поверхность хранит след инструмента и времени.
+</p>
+</div>
+
+</div>
+
+<div class="half symbol green">
+<img src="images/wood.svg">
+</div>
+
 </section>
 
 <!-- 3 -->
 <section class="block">
-  <div class="half symbol purple">
-    <img src="images/instruments.svg">
-  </div>
 
-  <div class="half text">
-    <div>
-      <h2>Строим инструменты</h2>
-      <p>
-        Гравитон, кахон Фибоначчи, монохорд.
-      </p>
-    </div>
-  </div>
+<div class="half symbol purple">
+<img src="images/instruments.svg">
+</div>
+
+<div class="half text">
+
+<div>
+<h2>Строим музыкальные инструменты</h2>
+<p>
+Гравитон — гравитационный аккорд.
+Гул планетарного масштаба.
+Кахон Фибоначчи — перкуссионный ящик в золотой пропорции.
+Сухой глубокий бас.
+Монохорд — одна струна, сто смыслов.
+Медитация в дереве и звуке.
+</p>
+</div>
+
+</div>
+
 </section>
 
 <!-- 4 -->
 <section class="block">
-  <div class="half text">
-    <div>
-      <h2>Играем музыку</h2>
-      <p>
-        Без нот, без правил. Просто поток.
-      </p>
-    </div>
-  </div>
 
-  <div class="half symbol orange">
-    <img src="images/music.svg">
-  </div>
+<div class="half text">
+
+<div>
+<h2>Играем музыку</h2>
+<p>
+Каждая встреча заканчивается общей игрой.
+Без нот, без правил.
+Кто-то задаёт ритм на кахоне,
+кто-то ласкает монохорд,
+кто-то просто сидит.
+Записываем фрагмент —
+он уходит в закрытый чат
+«заварили-запилили».
+</p>
+</div>
+
+</div>
+
+<div class="half symbol orange">
+<img src="images/music.svg">
+</div>
+
 </section>
 
 </div>
