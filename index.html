@@ -29,7 +29,7 @@ body{
 }
 
 /* =========================
-DESKTOP (как у тебя)
+DESKTOP
 ========================= */
 
 .block{
@@ -103,7 +103,7 @@ p{
 }
 
 /* =========================
-TABLET (не ломаем сцену)
+TABLET
 ========================= */
 
 @media (max-width:1200px){
@@ -132,7 +132,7 @@ p{
 }
 
 /* =========================
-MOBILE (СЦЕНЫ СОХРАНЯЮТСЯ!)
+MOBILE + ANIMATION (FIXED)
 ========================= */
 
 @media (max-width:768px){
@@ -141,13 +141,33 @@ MOBILE (СЦЕНЫ СОХРАНЯЮТСЯ!)
   height:auto;
 }
 
-/* ❗ ВАЖНО: сохраняем sticky эффект */
+/* сцены сохраняются */
 .block{
   position:sticky;
   top:0;
   height:100vh;
   display:flex;
   flex-direction:column;
+
+  /* 🔥 анимация появления сцены */
+  animation: fadeIn 0.6s ease both;
+}
+
+/* ключевая анимация */
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    transform:scale(1.03);
+  }
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+/* структура */
+.half{
+  width:100%;
 }
 
 /* картинка сверху */
@@ -167,7 +187,7 @@ MOBILE (СЦЕНЫ СОХРАНЯЮТСЯ!)
   justify-content:flex-start;
 }
 
-/* размеры картинки */
+/* image */
 .symbol img{
   width:70vw;
   height:70vw;
@@ -175,7 +195,7 @@ MOBILE (СЦЕНЫ СОХРАНЯЮТСЯ!)
   max-height:320px;
 }
 
-/* текст */
+/* typography */
 h2{
   font-size:40px;
   margin-bottom:16px;
@@ -273,3 +293,4 @@ p{
 
 </body>
 </html>
+
