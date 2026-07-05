@@ -41,6 +41,13 @@ DESKTOP
   overflow:hidden;
   transform:scale(.995);
   filter:brightness(.92);
+  opacity:0.6;
+  transition:all 0.6s ease;
+}
+
+.block.active{
+  opacity:1;
+  transform:scale(1);
 }
 
 .block::after{
@@ -132,7 +139,7 @@ p{
 }
 
 /* =========================
-MOBILE + ANIMATION (FIXED)
+MOBILE (STRICT ORDER FIX)
 ========================= */
 
 @media (max-width:768px){
@@ -141,7 +148,7 @@ MOBILE + ANIMATION (FIXED)
   height:auto;
 }
 
-/* сцены сохраняются */
+/* сцена остаётся сценой */
 .block{
   position:sticky;
   top:0;
@@ -149,39 +156,35 @@ MOBILE + ANIMATION (FIXED)
   display:flex;
   flex-direction:column;
 
-  /* 🔥 анимация появления сцены */
-  animation: fadeIn 0.6s ease both;
+  opacity:0.6;
+  transform:scale(1.02);
+  transition:all 0.6s ease;
 }
 
-/* ключевая анимация */
-@keyframes fadeIn{
-  from{
-    opacity:0;
-    transform:scale(1.03);
-  }
-  to{
-    opacity:1;
-    transform:scale(1);
-  }
+.block.active{
+  opacity:1;
+  transform:scale(1);
 }
 
-/* структура */
+/* ВАЖНО: порядок сохраняем логически */
 .half{
   width:100%;
 }
 
-/* картинка сверху */
+/* 🔥 КАРТИНКА СВЕРХУ */
 .symbol{
+  order:0;
   flex:0 0 42vh;
   display:flex;
   align-items:center;
   justify-content:center;
 }
 
-/* текст снизу */
+/* 🔥 ТЕКСТ СНИЗУ */
 .text{
+  order:1;
   flex:1;
-  padding:30px 24px;
+  padding:28px 24px;
   display:flex;
   flex-direction:column;
   justify-content:flex-start;
@@ -243,7 +246,6 @@ p{
       Каждая поверхность хранит след инструмента и времени.
     </p>
   </div>
-
   <div class="half symbol green">
     <img src="images/wood.svg">
   </div>
@@ -254,7 +256,6 @@ p{
   <div class="half symbol purple">
     <img src="images/instruments.svg">
   </div>
-
   <div class="half text">
     <h2>Строим музыкальные инструменты</h2>
     <p>
@@ -283,7 +284,6 @@ p{
       «заварили-запилили».
     </p>
   </div>
-
   <div class="half symbol orange">
     <img src="images/music.svg">
   </div>
@@ -291,6 +291,24 @@ p{
 
 </div>
 
+<!-- JS АНИМАЦИЯ СЦЕН -->
+<script>
+const blocks = document.querySelectorAll('.block');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+    } else {
+      entry.target.classList.remove('active');
+    }
+  });
+}, {
+  threshold: 0.6
+});
+
+blocks.forEach(b => observer.observe(b));
+</script>
+
 </body>
 </html>
-
